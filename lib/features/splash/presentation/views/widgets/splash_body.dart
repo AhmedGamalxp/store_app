@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/app_router.dart';
-import 'package:store_app/core/utils/size_config.dart';
 import 'package:store_app/core/widgets/custom_botton.dart';
 import 'package:store_app/features/splash/presentation/views/widgets/splash_item.dart';
 
@@ -15,6 +14,7 @@ class SplashBody extends StatefulWidget {
 
 class _SplashBodyState extends State<SplashBody> {
   int currentIndex = 0;
+  PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,6 +25,7 @@ class _SplashBodyState extends State<SplashBody> {
             child: SizedBox(
               width: double.infinity,
               child: PageView.builder(
+                controller: controller,
                 onPageChanged: (value) => setState(() {
                   currentIndex = value;
                 }),
@@ -56,11 +57,13 @@ class _SplashBodyState extends State<SplashBody> {
                   flex: 3,
                 ),
                 CustomBotton(
-                  text: 'Continue',
+                  text: currentIndex == 2 ? 'Continue' : 'Next',
                   onPressed: () {
-                    if (currentIndex == splashData.length) {
-                      context.push(AppRouter.kHomeView);
+                    if (currentIndex == 2) {
+                      context.push(AppRouter.kSignIn);
                     }
+                    controller.nextPage(
+                        duration: kAnimationDuration, curve: Curves.linear);
                   },
                 ),
                 const Spacer(),

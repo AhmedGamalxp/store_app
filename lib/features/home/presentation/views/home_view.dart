@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/features/home/presentation/views/widgets/home_appBar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -7,7 +8,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
-        children: [],
+        children: [
+          HomeViewAppBar(),
+        ],
       ),
     );
   }

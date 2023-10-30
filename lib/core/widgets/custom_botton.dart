@@ -16,6 +16,7 @@ class CustomBotton extends StatelessWidget {
       height: getProportionateScreenHeight(56),
       width: double.infinity,
       child: MaterialButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         onPressed: onPressed,
         child: Text(
           text,
