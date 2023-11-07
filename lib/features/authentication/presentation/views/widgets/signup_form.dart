@@ -7,18 +7,20 @@ import 'package:store_app/core/widgets/custom_botton.dart';
 import 'package:store_app/features/authentication/presentation/views/widgets/custom_formfield.dart';
 import 'package:store_app/features/authentication/presentation/views/widgets/form_erorr.dart';
 
-class SignInForm extends StatefulWidget {
-  const SignInForm({super.key});
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
   @override
-  State<SignInForm> createState() => _SignInFormState();
+  State<SignUpForm> createState() => _SignInFormState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _SignInFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
-
+  TextEditingController passController = TextEditingController();
   final List<String> erorrList = [];
   String? email, password;
-  bool checkValue = false;
+  bool checkBoxValue = false;
+  String? confirmPass;
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -29,6 +31,36 @@ class _SignInFormState extends State<SignInForm> {
             children: [
               CustomFormField(
                 onsave: (value) {},
+                onChanged: (value) {
+                  if (value == null ||
+                      value.isNotEmpty && erorrList.contains(kNamelNullError)) {
+                    setState(() {
+                      erorrList.remove(kNamelNullError);
+                    });
+                  }
+                  return null;
+                },
+                validator: (value) {
+                  if (value == null ||
+                      value.isEmpty && !erorrList.contains(kNamelNullError)) {
+                    setState(() {
+                      erorrList.add(kNamelNullError);
+                    });
+                  }
+                  return null;
+                },
+                keyboardType: TextInputType.name,
+                suffixIcon: Icons.person_2_outlined,
+                hint: 'Enter your Name',
+                lable: 'Name',
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(30),
+              ),
+              CustomFormField(
+                onsave: (value) {
+                  email = value;
+                },
                 onChanged: (value) {
                   if (value == null ||
                       value.isNotEmpty && erorrList.contains(kEmailNullError)) {
@@ -66,11 +98,20 @@ class _SignInFormState extends State<SignInForm> {
                 height: getProportionateScreenHeight(30),
               ),
               CustomFormField(
+                controller: passController,
+                onSuffixTap: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
                 onsave: (value) {
                   password = value;
                 },
-                obscureText: true,
+                obscureText: obscureText,
                 onChanged: (value) {
+                  setState(() {
+                    confirmPass = value;
+                  });
                   if (value == null ||
                       value.isNotEmpty && erorrList.contains(kPassNullError)) {
                     setState(() {
@@ -90,7 +131,7 @@ class _SignInFormState extends State<SignInForm> {
                     setState(() {
                       erorrList.add(kPassNullError);
                     });
-                  } else if (value.length <= 8 &&
+                  } else if (value.length < 8 &&
                       !erorrList.contains(kShortPassError)) {
                     setState(() {
                       erorrList.add(kShortPassError);
@@ -99,43 +140,56 @@ class _SignInFormState extends State<SignInForm> {
                   return null;
                 },
                 keyboardType: TextInputType.visiblePassword,
-                suffixIcon: Icons.lock_outline_rounded,
+                suffixIcon: obscureText
+                    ? Icons.lock_outline_rounded
+                    : Icons.lock_open_outlined,
                 hint: 'Enter your Password',
                 lable: 'Password',
               ),
               SizedBox(
+                height: getProportionateScreenHeight(30),
+              ),
+              CustomFormField(
+                onSuffixTap: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
+                onsave: (value) {
+                  // confirmPass = value;
+                },
+                obscureText: obscureText,
+                onChanged: (value) {
+                  // setState(() {
+                  //   confirmPass = passController.text;
+                  // });
+                  if (value == confirmPass &&
+                      erorrList.contains(kMatchPassError)) {
+                    setState(() {
+                      erorrList.remove(kMatchPassError);
+                    });
+                  }
+                  return null;
+                },
+                validator: (value) {
+                  if (value != confirmPass &&
+                      !erorrList.contains(kMatchPassError)) {
+                    setState(() {
+                      erorrList.add(kMatchPassError);
+                    });
+                  }
+                  return null;
+                },
+                keyboardType: TextInputType.visiblePassword,
+                suffixIcon: obscureText
+                    ? Icons.lock_outline_rounded
+                    : Icons.lock_open_outlined,
+                hint: 'Enter your Password again',
+                lable: 'Confirm Password',
+              ),
+              SizedBox(
                 height: getProportionateScreenHeight(10),
               ),
-              Row(
-                children: [
-                  Checkbox(
-                      activeColor: kPrimaryColor,
-                      value: checkValue,
-                      onChanged: (value) {
-                        setState(() {
-                          checkValue = value!;
-                        });
-                      }),
-                  Text(
-                    'Remember me',
-                    style: TextStyle(fontSize: getProportionateScreenWidth(15)),
-                  ),
-                  const Spacer(),
-                  TextButton(
-                      onPressed: () {
-                        context.push(AppRouter.kForgetPassword);
-                      },
-                      child: Text(
-                        'Forget password',
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 2,
-                            color: kTextColor,
-                            fontSize: getProportionateScreenWidth(15)),
-                      ))
-                ],
-              ),
-              SizedBox(height: getProportionateScreenWidth(10)),
               FormErorr(erorrList: erorrList),
               SizedBox(
                 height: getProportionateScreenHeight(16),
@@ -143,9 +197,10 @@ class _SignInFormState extends State<SignInForm> {
               CustomBotton(
                 text: 'Continue',
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {
+                  context.push(AppRouter.kOTPview);
+                  if (formKey.currentState!.validate() && erorrList.isEmpty) {
                     formKey.currentState!.save();
-                    context.push(AppRouter.kLoginSuccess);
+                    print('111111111111111');
                   }
                 },
               ),

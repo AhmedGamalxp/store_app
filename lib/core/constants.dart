@@ -19,6 +19,7 @@ final RegExp emailValidatorRegExp =
 const String kEmailNullError = "Please Enter your email";
 const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Please Enter your password";
+const String kConfirmPassNullError = "Please Enter your password again";
 const String kShortPassError = "Password is too short";
 const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
@@ -39,3 +40,14 @@ const List<Map<String, String>> splashData = [
     "image": "assets/images/splash_3.png"
   },
 ];
+final InputDecoration otpDecoration = InputDecoration(
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+  ),
+);

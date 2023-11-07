@@ -3,23 +3,23 @@ import 'package:go_router/go_router.dart';
 import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/core/utils/size_config.dart';
-import 'package:store_app/features/authentication/presentation/views/widgets/signin_form.dart';
-import 'package:store_app/features/authentication/presentation/views/widgets/social_card.dart';
+import 'package:store_app/core/widgets/custom_botton.dart';
+import 'package:store_app/features/authentication/presentation/views/widgets/custom_formfield.dart';
 
-class SignInBody extends StatelessWidget {
-  const SignInBody({super.key});
+class ForgetPasswordBody extends StatelessWidget {
+  const ForgetPasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(height: SizeConfig.screenHeight * 0.04),
             Text(
-              'Welcome Back',
+              'Forget Password',
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
@@ -30,31 +30,20 @@ class SignInBody extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Sign in with your email and password \n or continue with social media ',
+              'Please enter your email and we will send\nyou a link to return to your account',
               textAlign: TextAlign.center,
               style: TextStyle(
                   height: 1.7, fontSize: getProportionateScreenWidth(15)),
             ),
-            SizedBox(height: SizeConfig.screenHeight * 0.08),
-            const SignInForm(),
-            SizedBox(height: SizeConfig.screenHeight * 0.08),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SocialCard(
-                  image: 'assets/icons/google-icon.svg',
-                ),
-                SizedBox(width: 10),
-                SocialCard(
-                  image: 'assets/icons/facebook-2.svg',
-                ),
-                SizedBox(width: 10),
-                SocialCard(
-                  image: 'assets/icons/twitter.svg',
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
+            SizedBox(height: SizeConfig.screenHeight * 0.16),
+            const CustomFormField(
+                lable: 'Email',
+                hint: 'Enter your email',
+                suffixIcon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress),
+            SizedBox(height: SizeConfig.screenHeight * 0.16),
+            const CustomBotton(text: 'Coutinue'),
+            SizedBox(height: SizeConfig.screenHeight * 0.16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
