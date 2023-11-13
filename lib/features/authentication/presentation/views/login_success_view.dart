@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/core/utils/size_config.dart';
 import 'package:store_app/core/widgets/custom_botton.dart';
 
@@ -27,9 +29,14 @@ class LoginSuccessView extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             const Spacer(),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 70),
-              child: CustomBotton(text: 'Back to home'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 70),
+              child: CustomBotton(
+                text: 'Back to home',
+                onPressed: () {
+                  context.push(AppRouter.kHomeView);
+                },
+              ),
             ),
             const Spacer(),
           ],
