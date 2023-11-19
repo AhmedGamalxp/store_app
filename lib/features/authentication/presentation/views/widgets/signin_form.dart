@@ -115,7 +115,7 @@ class _SignInFormState extends State<SignInForm> {
                         setState(() {
                           checkValue = value!;
                         });
-                      }),
+                      },),
                   Text(
                     'Remember me',
                     style: TextStyle(fontSize: getProportionateScreenWidth(15)),
@@ -131,8 +131,8 @@ class _SignInFormState extends State<SignInForm> {
                             decoration: TextDecoration.underline,
                             decorationThickness: 2,
                             color: kTextColor,
-                            fontSize: getProportionateScreenWidth(15)),
-                      ))
+                            fontSize: getProportionateScreenWidth(15),),
+                      ),),
                 ],
               ),
               SizedBox(height: getProportionateScreenWidth(10)),
@@ -151,9 +151,9 @@ class _SignInFormState extends State<SignInForm> {
               ),
               const SizedBox(
                 height: 20,
-              )
+              ),
             ],
           ),
-        ));
+        ),);
   }
 }

@@ -26,7 +26,7 @@ class LoginSuccessView extends StatelessWidget {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: getProportionateScreenWidth(26),
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,),
             ),
             const Spacer(),
             Padding(

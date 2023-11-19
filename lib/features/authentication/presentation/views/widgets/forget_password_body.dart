@@ -24,7 +24,7 @@ class ForgetPasswordBody extends StatelessWidget {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: getProportionateScreenWidth(26),
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,),
             ),
             const SizedBox(
               height: 10,
@@ -33,14 +33,14 @@ class ForgetPasswordBody extends StatelessWidget {
               'Please enter your email and we will send\nyou a link to return to your account',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  height: 1.7, fontSize: getProportionateScreenWidth(15)),
+                  height: 1.7, fontSize: getProportionateScreenWidth(15),),
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.16),
             const CustomFormField(
                 lable: 'Email',
                 hint: 'Enter your email',
                 suffixIcon: Icons.email_outlined,
-                keyboardType: TextInputType.emailAddress),
+                keyboardType: TextInputType.emailAddress,),
             SizedBox(height: SizeConfig.screenHeight * 0.16),
             const CustomBotton(text: 'Coutinue'),
             SizedBox(height: SizeConfig.screenHeight * 0.16),

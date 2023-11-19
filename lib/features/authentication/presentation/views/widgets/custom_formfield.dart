@@ -13,7 +13,7 @@ class CustomFormField extends StatelessWidget {
       this.obscureText = false,
       this.onsave,
       this.onSuffixTap,
-      this.controller});
+      this.controller,});
   final String lable, hint;
   final IconData suffixIcon;
   final bool obscureText;
@@ -57,7 +57,7 @@ class CustomFormField extends StatelessWidget {
                 size: 30,
               ),
             ),
-          )),
+          ),),
       style: const TextStyle(color: kTextColor, fontSize: 17),
     );
   }

@@ -6,7 +6,7 @@ import 'package:store_app/core/utils/size_config.dart';
 class IconBWithCounter extends StatelessWidget {
   const IconBWithCounter({
     super.key,
-    required this.numberOfItem,
+    this.numberOfItem = 0,
     required this.svgPicture,
     this.onTap,
   });
@@ -27,7 +27,7 @@ class IconBWithCounter extends StatelessWidget {
             height: getProportionateScreenHeight(50),
             decoration: BoxDecoration(
                 color: kSecondaryColor.withOpacity(0.1),
-                shape: BoxShape.circle),
+                shape: BoxShape.circle,),
             child: Padding(
               padding: EdgeInsets.all(getProportionateScreenWidth(14)),
               child: SvgPicture.asset(
@@ -45,7 +45,7 @@ class IconBWithCounter extends StatelessWidget {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: const Color(0xffff8484),
-                      border: Border.all(width: 2, color: Colors.white)),
+                      border: Border.all(width: 2, color: Colors.white),),
                   child: Center(
                     child: Text(
                       '$numberOfItem',
@@ -57,7 +57,7 @@ class IconBWithCounter extends StatelessWidget {
                       ),
                     ),
                   ),
-                )),
+                ),),
         ],
       ),
     );

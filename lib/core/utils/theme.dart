@@ -7,8 +7,8 @@ ThemeData myTheme() {
     scaffoldBackgroundColor: Colors.white,
     brightness: Brightness.light,
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: kTextColor),
-      bodyMedium: TextStyle(color: kTextColor),
+      bodyLarge: TextStyle(color: kTextColor, height: 1.2),
+      bodyMedium: TextStyle(color: kTextColor, height: 1.2),
     ),
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.white),

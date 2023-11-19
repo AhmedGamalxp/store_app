@@ -10,7 +10,7 @@ class SignUpView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Sign Up'),
       ),
-      body: SignUpBody(),
+      body: const SignUpBody(),
     );
   }
 }

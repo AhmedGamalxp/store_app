@@ -206,9 +206,9 @@ class _SignInFormState extends State<SignUpForm> {
               ),
               const SizedBox(
                 height: 20,
-              )
+              ),
             ],
           ),
-        ));
+        ),);
   }
 }

@@ -10,8 +10,8 @@ class HomeViewAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(20),
-          vertical: getProportionateScreenWidth(8)),
+        horizontal: getProportionateScreenWidth(20),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -19,17 +19,17 @@ class HomeViewAppBar extends StatelessWidget {
             width: SizeConfig.screenWidth * 0.6,
             decoration: BoxDecoration(
                 color: kSecondaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(12),),
             child: TextField(
               decoration: InputDecoration(
                   hintText: 'Search product',
                   prefixIcon: const Icon(Icons.search),
                   contentPadding: EdgeInsets.symmetric(
                       horizontal: getProportionateScreenWidth(20),
-                      vertical: getProportionateScreenWidth(13)),
+                      vertical: getProportionateScreenWidth(13),),
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none),
+                  enabledBorder: InputBorder.none,),
             ),
           ),
           IconBWithCounter(

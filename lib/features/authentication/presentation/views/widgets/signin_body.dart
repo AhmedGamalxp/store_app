@@ -24,7 +24,7 @@ class SignInBody extends StatelessWidget {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: getProportionateScreenWidth(26),
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,),
             ),
             const SizedBox(
               height: 10,
@@ -33,7 +33,7 @@ class SignInBody extends StatelessWidget {
               'Sign in with your email and password \n or continue with social media ',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  height: 1.7, fontSize: getProportionateScreenWidth(15)),
+                  height: 1.7, fontSize: getProportionateScreenWidth(15),),
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.08),
             const SignInForm(),

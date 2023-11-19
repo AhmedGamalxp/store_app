@@ -12,7 +12,7 @@ class SocialCard extends StatelessWidget {
       onTap: ontap,
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.2), shape: BoxShape.circle),
+            color: Colors.grey.withOpacity(0.2), shape: BoxShape.circle,),
         padding: EdgeInsets.all(getProportionateScreenWidth(10)),
         width: getProportionateScreenWidth(40),
         height: getProportionateScreenHeight(40),
