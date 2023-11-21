@@ -18,7 +18,7 @@ class AddToCartSection extends StatelessWidget {
         ),
         child: const Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50),
+            padding: EdgeInsets.symmetric(horizontal: 70),
             child: CustomBotton(text: 'Add to cart'),
           ),
         ),

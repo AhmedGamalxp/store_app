@@ -4,8 +4,8 @@ import 'package:store_app/features/authentication/presentation/views/login_succe
 import 'package:store_app/features/authentication/presentation/views/otp_view.dart';
 import 'package:store_app/features/authentication/presentation/views/signin_view.dart';
 import 'package:store_app/features/authentication/presentation/views/signup_view.dart';
-import 'package:store_app/features/home/presentation/views/detailes_view.dart';
 import 'package:store_app/features/home/presentation/views/home_view.dart';
+import 'package:store_app/features/product_describtion/presentation/views/detailes_view.dart';
 import 'package:store_app/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {

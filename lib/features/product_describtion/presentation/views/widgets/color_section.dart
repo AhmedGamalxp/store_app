@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:store_app/core/constants.dart';
 import 'package:store_app/features/home/presentation/views/widgets/rounded_btn.dart';
 
 class ColorSection extends StatefulWidget {
@@ -11,7 +11,15 @@ class ColorSection extends StatefulWidget {
 
 class _ColorSectionState extends State<ColorSection> {
   int selectedColor = 0;
-
+  int numberOfProduct = 1;
+  List<Color> colorList = [
+    const Color(0xffd11141),
+    const Color(0xff00b159),
+    const Color(0xff00aedb),
+    const Color(0xfff37735),
+    const Color(0xffffc425),
+    const Color(0x000000ff),
+  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,7 +30,7 @@ class _ColorSectionState extends State<ColorSection> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(
-              5,
+              colorList.length,
               (index) => GestureDetector(
                 onTap: () {
                   setState(() {
@@ -33,13 +41,37 @@ class _ColorSectionState extends State<ColorSection> {
               ),
             ),
           ),
-          const Row(
+          Row(
             children: [
-              RoundedBTN(icon: Icons.add),
-              Gap(
-                16,
+              RoundedBTN(
+                icon: Icons.add,
+                ontap: () {
+                  setState(() {
+                    numberOfProduct++;
+                  });
+                },
               ),
-              RoundedBTN(icon: Icons.remove),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  '$numberOfProduct',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              RoundedBTN(
+                icon: Icons.remove,
+                ontap: () {
+                  setState(() {
+                    if (numberOfProduct > 1) {
+                      numberOfProduct--;
+                    }
+                  });
+                },
+              ),
             ],
           ),
         ],
@@ -60,7 +92,7 @@ class _ColorSectionState extends State<ColorSection> {
               shape: BoxShape.circle,
               border: Border.all(
                 color:
-                    selectedColor == index ? Colors.black : Colors.transparent,
+                    selectedColor == index ? kPrimaryColor : Colors.transparent,
                 width: 2,
               ),
             ),
@@ -71,8 +103,8 @@ class _ColorSectionState extends State<ColorSection> {
             child: Container(
               width: 20,
               height: 20,
-              decoration: const BoxDecoration(
-                color: Colors.red,
+              decoration: BoxDecoration(
+                color: colorList[index],
                 shape: BoxShape.circle,
               ),
             ),
