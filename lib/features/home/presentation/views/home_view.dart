@@ -6,7 +6,6 @@ import 'package:store_app/features/home/presentation/views/widgets/discount_bann
 import 'package:store_app/features/home/presentation/views/widgets/home_appBar.dart';
 import 'package:store_app/features/home/presentation/views/widgets/popular_product_listview.dart';
 import 'package:store_app/features/home/presentation/views/widgets/section_title.dart';
-import 'package:store_app/features/home/presentation/views/widgets/special_offer_card.dart';
 import 'package:store_app/features/home/presentation/views/widgets/special_offer_listview.dart';
 
 class HomeView extends StatelessWidget {

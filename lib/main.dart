@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/core/utils/theme.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const Marketo());
@@ -11,6 +12,7 @@ class Marketo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      
       theme: myTheme(),
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,

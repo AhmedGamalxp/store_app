@@ -4,6 +4,7 @@ import 'package:store_app/features/authentication/presentation/views/login_succe
 import 'package:store_app/features/authentication/presentation/views/otp_view.dart';
 import 'package:store_app/features/authentication/presentation/views/signin_view.dart';
 import 'package:store_app/features/authentication/presentation/views/signup_view.dart';
+import 'package:store_app/features/home/presentation/views/detailes_view.dart';
 import 'package:store_app/features/home/presentation/views/home_view.dart';
 import 'package:store_app/features/splash/presentation/views/splash_view.dart';
 
@@ -14,6 +15,7 @@ abstract class AppRouter {
   static const kForgetPassword = '/kForgetPassword';
   static const kLoginSuccess = '/LoginSuccess';
   static const kOTPview = '/OTPview';
+  static const kDetailesView = '/DetailesView';
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -43,6 +45,10 @@ abstract class AppRouter {
       GoRoute(
         path: kOTPview,
         builder: (context, state) => const OTPViev(),
+      ),
+      GoRoute(
+        path: kDetailesView,
+        builder: (context, state) => const DetailesView(),
       ),
     ],
   );
