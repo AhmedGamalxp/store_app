@@ -6,6 +6,7 @@ import 'package:store_app/features/authentication/presentation/views/signin_view
 import 'package:store_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:store_app/features/cart/presentation/views/cart_view.dart';
 import 'package:store_app/features/home/presentation/views/home_view.dart';
+import 'package:store_app/features/home/presentation/views/main_view.dart';
 import 'package:store_app/features/product_describtion/presentation/views/detailes_view.dart';
 import 'package:store_app/features/profile/presentation/views/profile_view.dart';
 import 'package:store_app/features/splash/presentation/views/splash_view.dart';
@@ -20,12 +21,13 @@ abstract class AppRouter {
   static const kDetailesView = '/DetailesView';
   static const kCartView = '/CartView';
   static const kProfileView = '/ProfileView';
+  static const kMainView = '/MainView';
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
-      // GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const SplashView(),
-      // ),
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const SplashView(),
+      ),
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const HomeView(),
@@ -59,8 +61,12 @@ abstract class AppRouter {
         builder: (context, state) => const CartView(),
       ),
       GoRoute(
-        path: '/',
+        path: kProfileView,
         builder: (context, state) => const ProfileView(),
+      ),
+      GoRoute(
+        path: kMainView,
+        builder: (context, state) => const MainView(),
       ),
     ],
   );

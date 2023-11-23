@@ -8,28 +8,35 @@ class HomeViewAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(20),
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+        bottom: 20,
+        top: 40,
       ),
+      color: Colors.white.withOpacity(0.1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             width: SizeConfig.screenWidth * 0.6,
             decoration: BoxDecoration(
-                color: kSecondaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12),),
+              color: const Color(0xffF2F5F1),
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: TextField(
               decoration: InputDecoration(
-                  hintText: 'Search product',
-                  prefixIcon: const Icon(Icons.search),
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(20),
-                      vertical: getProportionateScreenWidth(13),),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,),
+                hintText: 'Search product',
+                prefixIcon: const Icon(Icons.search),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(20),
+                  vertical: getProportionateScreenWidth(13),
+                ),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+              ),
             ),
           ),
           IconBWithCounter(

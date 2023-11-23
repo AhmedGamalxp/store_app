@@ -25,9 +25,10 @@ class IconBWithCounter extends StatelessWidget {
           Container(
             width: getProportionateScreenWidth(50),
             height: getProportionateScreenHeight(50),
-            decoration: BoxDecoration(
-                color: kSecondaryColor.withOpacity(0.1),
-                shape: BoxShape.circle,),
+            decoration: const BoxDecoration(
+              color: Color(0xffF2F5F1),
+              shape: BoxShape.circle,
+            ),
             child: Padding(
               padding: EdgeInsets.all(getProportionateScreenWidth(14)),
               child: SvgPicture.asset(
@@ -37,27 +38,29 @@ class IconBWithCounter extends StatelessWidget {
           ),
           if (numberOfItem != 0)
             Positioned(
-                right: 0,
-                top: -3,
-                child: Container(
-                  width: getProportionateScreenWidth(20),
-                  height: getProportionateScreenHeight(20),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: const Color(0xffff8484),
-                      border: Border.all(width: 2, color: Colors.white),),
-                  child: Center(
-                    child: Text(
-                      '$numberOfItem',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(10),
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        height: 1,
-                      ),
+              right: 0,
+              top: -3,
+              child: Container(
+                width: getProportionateScreenWidth(20),
+                height: getProportionateScreenHeight(20),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: const Color(0xffff8484),
+                  border: Border.all(width: 2, color: Colors.white),
+                ),
+                child: Center(
+                  child: Text(
+                    '$numberOfItem',
+                    style: TextStyle(
+                      fontSize: getProportionateScreenWidth(10),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      height: 1,
                     ),
                   ),
-                ),),
+                ),
+              ),
+            ),
         ],
       ),
     );

@@ -24,9 +24,10 @@ class LoginSuccessView extends StatelessWidget {
               'Login Success',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getProportionateScreenWidth(26),
-                  fontWeight: FontWeight.bold,),
+                color: Colors.black,
+                fontSize: getProportionateScreenWidth(26),
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Spacer(),
             Padding(
@@ -34,7 +35,7 @@ class LoginSuccessView extends StatelessWidget {
               child: CustomBotton(
                 text: 'Back to home',
                 onPressed: () {
-                  context.push(AppRouter.kHomeView);
+                  context.push(AppRouter.kMainView);
                 },
               ),
             ),

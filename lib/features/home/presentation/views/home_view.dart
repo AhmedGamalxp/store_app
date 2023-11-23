@@ -13,31 +13,38 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Gap(getProportionateScreenWidth(10)),
-              const HomeViewAppBar(),
-              Gap(getProportionateScreenWidth(20)),
-              const DiscountBanner(),
-              Gap(getProportionateScreenWidth(20)),
-              const Categories(),
-              Gap(getProportionateScreenWidth(20)),
-              SectionTiTle(title: 'Special for you', ontap: () {}),
-              Gap(getProportionateScreenWidth(10)),
-              const SpecialOfferListView(),
-              Gap(getProportionateScreenWidth(20)),
-              SectionTiTle(title: 'Popular products', ontap: () {}),
-              Gap(getProportionateScreenWidth(10)),
-              const PopularProductsListview(),
-              Gap(getProportionateScreenWidth(20)),
-            ],
+      extendBody: true,
+
+      body: Column(
+        children: [
+          const HomeViewAppBar(),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 80),
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  const DiscountBanner(),
+                  Gap(getProportionateScreenWidth(20)),
+                  const Categories(),
+                  Gap(getProportionateScreenWidth(20)),
+                  SectionTiTle(title: 'Special for you', ontap: () {}),
+                  Gap(getProportionateScreenWidth(10)),
+                  const SpecialOfferListView(),
+                  Gap(getProportionateScreenWidth(20)),
+                  SectionTiTle(title: 'Popular products', ontap: () {}),
+                  Gap(getProportionateScreenWidth(10)),
+                  const PopularProductsListview(),
+                  Gap(getProportionateScreenWidth(20)),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
+      // bottomNavigationBar: const CustomBottmNavBar(),
     );
   }
 }

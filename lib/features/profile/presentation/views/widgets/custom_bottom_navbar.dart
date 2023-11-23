@@ -1,60 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:store_app/core/constants.dart';
-import 'package:store_app/core/utils/enums.dart';
 
 class CustomBottmNavBar extends StatelessWidget {
-  const CustomBottmNavBar({super.key, required this.selectedMenu});
-  final MenuState selectedMenu;
+  const CustomBottmNavBar({
+    super.key,
+    this.onTabChange,
+  });
+  final Function(int)? onTabChange;
   @override
   Widget build(BuildContext context) {
-    const Color inActiveColor = Color(0xffb6b6b6);
     return Container(
-      // height: 70,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            offset: const Offset(0, -10),
-            blurRadius: 20,
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/Shop Icon.svg',
-           
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/Heart Icon.svg',
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/Cart Icon.svg',
-               
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/icons/User Icon.svg',
-               
-              ),
+      padding: const EdgeInsets.all(20),
+      color: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 20,
             ),
           ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: GNav(
+            tabBackgroundColor: kPrimaryColor.withOpacity(0.2),
+            color: kTextColor,
+            activeColor: kPrimaryColor,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            gap: 10,
+            onTabChange: onTabChange,
+            tabs: const [
+              GButton(
+                icon: LineIcons.home,
+                text: 'Home',
+              ),
+              GButton(
+                icon: LineIcons.heart,
+                text: 'Likes',
+              ),
+              GButton(
+                icon: LineIcons.shoppingBasket,
+                text: 'Cart',
+              ),
+              GButton(
+                icon: LineIcons.user,
+                text: 'Profile',
+              ),
+            ],
+          ),
         ),
       ),
     );

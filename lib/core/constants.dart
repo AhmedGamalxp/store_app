@@ -8,9 +8,10 @@ const kTextColor = Color(0xFF757575);
 const kAnimationDuration = Duration(milliseconds: 200);
 InputBorder myBorder() {
   return OutlineInputBorder(
-      borderSide: const BorderSide(color: kTextColor),
-      borderRadius: BorderRadius.circular(30),
-      gapPadding: 15,);
+    borderSide: const BorderSide(color: kTextColor),
+    borderRadius: BorderRadius.circular(30),
+    gapPadding: 15,
+  );
 }
 
 // Form Error

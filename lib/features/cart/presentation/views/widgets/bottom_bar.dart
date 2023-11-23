@@ -10,7 +10,7 @@ class BottonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 174,
+      height: 260,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -23,9 +23,10 @@ class BottonBar extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding:
+            const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 120),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
