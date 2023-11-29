@@ -18,9 +18,10 @@ class SignUpBody extends StatelessWidget {
               'Register Account',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getProportionateScreenWidth(26),
-                  fontWeight: FontWeight.bold,),
+                color: Colors.black,
+                fontSize: getProportionateScreenWidth(26),
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -29,10 +30,15 @@ class SignUpBody extends StatelessWidget {
               'Complite your details or continue \n with social media ',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  height: 1.7, fontSize: getProportionateScreenWidth(15),),
+                height: 1.7,
+                fontSize: getProportionateScreenWidth(15),
+              ),
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.03),
-            const SignUpForm(),
+            //
+            const SignUpForm(), //Sign up form
+
+            //
             SizedBox(height: SizeConfig.screenHeight * 0.03),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,

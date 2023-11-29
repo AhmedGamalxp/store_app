@@ -26,6 +26,11 @@ const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
+const String kEmailAlreadyInUse = "The account already exists for that email";
+const String kUserNotFound = "No user found for that email.";
+const String kWrongPass = "Wrong password provided for that user";
+const String kErorr = "there was an error";
+const String kSignInErorr = "Sign in error";
 
 const List<Map<String, String>> splashData = [
   {
