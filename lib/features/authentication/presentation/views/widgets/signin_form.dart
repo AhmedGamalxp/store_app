@@ -48,7 +48,12 @@ class _SignInFormState extends State<SignInForm> {
                   setState(() {
                     fireBaseErorrList.remove(kErorr);
                   });
+                } else if (fireBaseErorrList.contains(kSignInErorr)) {
+                  setState(() {
+                    fireBaseErorrList.remove(kSignInErorr);
+                  });
                 }
+
                 return null;
               },
               validator: (value) {
@@ -91,6 +96,10 @@ class _SignInFormState extends State<SignInForm> {
                 } else if (fireBaseErorrList.contains(kErorr)) {
                   setState(() {
                     fireBaseErorrList.remove(kErorr);
+                  });
+                } else if (fireBaseErorrList.contains(kSignInErorr)) {
+                  setState(() {
+                    fireBaseErorrList.remove(kSignInErorr);
                   });
                 }
                 return null;

@@ -8,11 +8,14 @@ class SocialCard extends StatelessWidget {
   final Function()? ontap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      borderRadius: BorderRadius.circular(40),
       onTap: ontap,
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.2), shape: BoxShape.circle,),
+          color: Colors.grey.withOpacity(0.2),
+          shape: BoxShape.circle,
+        ),
         padding: EdgeInsets.all(getProportionateScreenWidth(10)),
         width: getProportionateScreenWidth(40),
         height: getProportionateScreenHeight(40),

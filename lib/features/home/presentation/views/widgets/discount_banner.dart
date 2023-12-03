@@ -18,14 +18,18 @@ class DiscountBanner extends StatelessWidget {
         ),
         child: const Padding(
           padding: EdgeInsets.all(20),
-          child: Text.rich(TextSpan(
+          child: Text.rich(
+            TextSpan(
               text: ' A Summer Surprise\n ',
               style: TextStyle(color: Colors.white, height: 1.3),
               children: [
                 TextSpan(
-                    text: 'Cashback 20%',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-              ],),),
+                  text: 'Cashback 20%',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

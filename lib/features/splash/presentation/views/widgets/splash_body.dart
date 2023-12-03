@@ -51,7 +51,9 @@ class _SplashBodyState extends State<SplashBody> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
-                      splashData.length, (index) => dotItem(index),),
+                    splashData.length,
+                    (index) => dotItem(index),
+                  ),
                 ),
                 const Spacer(
                   flex: 3,
@@ -63,7 +65,9 @@ class _SplashBodyState extends State<SplashBody> {
                       context.push(AppRouter.kSignIn);
                     }
                     controller.nextPage(
-                        duration: kAnimationDuration, curve: Curves.linear,);
+                      duration: kAnimationDuration,
+                      curve: Curves.linear,
+                    );
                   },
                 ),
                 const Spacer(),

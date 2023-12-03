@@ -30,7 +30,7 @@ const String kEmailAlreadyInUse = "The account already exists for that email";
 const String kUserNotFound = "No user found for that email.";
 const String kWrongPass = "Wrong password provided for that user";
 const String kErorr = "there was an error";
-const String kSignInErorr = "Sign in error";
+const String kSignInErorr = "Enter a valid Email and Password";
 
 const List<Map<String, String>> splashData = [
   {

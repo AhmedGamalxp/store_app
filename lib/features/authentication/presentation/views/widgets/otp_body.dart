@@ -18,9 +18,10 @@ class OTPBody extends StatelessWidget {
               'OTP Verificaion',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getProportionateScreenWidth(26),
-                  fontWeight: FontWeight.bold,),
+                color: Colors.black,
+                fontSize: getProportionateScreenWidth(26),
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -29,7 +30,9 @@ class OTPBody extends StatelessWidget {
               'We sent you code to +20 0102*****20',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  height: 1.7, fontSize: getProportionateScreenWidth(15),),
+                height: 1.7,
+                fontSize: getProportionateScreenWidth(15),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +41,9 @@ class OTPBody extends StatelessWidget {
                   'this code will expired in  ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: 1.7, fontSize: getProportionateScreenWidth(15),),
+                    height: 1.7,
+                    fontSize: getProportionateScreenWidth(15),
+                  ),
                 ),
                 TweenAnimationBuilder(
                   tween: Tween(begin: 30.0, end: 0),
@@ -46,9 +51,10 @@ class OTPBody extends StatelessWidget {
                   builder: (context, value, child) => Text(
                     "00:${value.toInt()}",
                     style: TextStyle(
-                        color: kPrimaryColor,
-                        height: 1.7,
-                        fontSize: getProportionateScreenWidth(15),),
+                      color: kPrimaryColor,
+                      height: 1.7,
+                      fontSize: getProportionateScreenWidth(15),
+                    ),
                   ),
                 ),
               ],
@@ -59,8 +65,9 @@ class OTPBody extends StatelessWidget {
             Text(
               'Resend OTP code',
               style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  fontSize: getProportionateScreenWidth(16),),
+                decoration: TextDecoration.underline,
+                fontSize: getProportionateScreenWidth(16),
+              ),
             ),
           ],
         ),
