@@ -53,6 +53,9 @@ class BottonBar extends StatelessWidget {
                     color: kSecondaryColor.withOpacity(0.1),
                   ),
                   child: TextFormField(
+                    onTapOutside: (event) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
                       isDense: true,

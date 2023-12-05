@@ -22,10 +22,16 @@ class SigninCubit extends Cubit<SigninState> {
     try {
       emit(SigninLoading());
       await auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: email.trim(),
+        password: password.trim(),
       );
-      emit(SigninSuccess());
+      if (auth.currentUser!.emailVerified) {
+        emit(SigninSuccess());
+      } else if (!auth.currentUser!.emailVerified &&
+          !erorrList.contains(kUserNotFound)) {
+        erorrList.add(kverifyAccount);
+        emit(SigninFailure(errorMassage: kverifyAccount));
+      }
     } on FirebaseAuthException catch (ex) {
       if (ex.code == 'user-not-found' && !erorrList.contains(kUserNotFound)) {
         erorrList.add(kUserNotFound);

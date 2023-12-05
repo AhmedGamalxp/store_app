@@ -18,9 +18,10 @@ class SignupCubit extends Cubit<SignupState> {
     try {
       emit(SignupLoading());
       await auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: email.trim(),
+        password: password.trim(),
       );
+      FirebaseAuth.instance.currentUser!.sendEmailVerification();
       emit(SignupSuccess());
     } on FirebaseAuthException catch (ex) {
       if (ex.code == 'email-already-in-use' &&

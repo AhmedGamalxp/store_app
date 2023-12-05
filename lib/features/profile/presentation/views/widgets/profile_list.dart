@@ -1,4 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/features/profile/presentation/views/widgets/profile_list_item.dart';
 
 class ProfileList extends StatelessWidget {
@@ -33,7 +38,13 @@ class ProfileList extends StatelessWidget {
           ProfileListItem(
             title: 'Log Out',
             iconPass: 'assets/icons/logout-svgrepo-com.svg',
-            ontap: () {},
+            ontap: () async {
+              await FirebaseAuth.instance.signOut();
+              GoogleSignIn googleSignIn = GoogleSignIn();
+              googleSignIn.disconnect();
+              await FacebookAuth.instance.logOut();
+              context.go(AppRouter.kSignIn);
+            },
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/features/authentication/presentation/controllers/signin_cubit/signin_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:store_app/features/authentication/presentation/views/forget_pass
 import 'package:store_app/features/authentication/presentation/views/login_success_view.dart';
 import 'package:store_app/features/authentication/presentation/views/otp_view.dart';
 import 'package:store_app/features/authentication/presentation/views/signin_view.dart';
+import 'package:store_app/features/authentication/presentation/views/signup_success.dart';
 import 'package:store_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:store_app/features/cart/presentation/views/cart_view.dart';
 import 'package:store_app/features/home/presentation/views/home_view.dart';
@@ -20,6 +22,7 @@ abstract class AppRouter {
   static const kSignUp = '/SignUp';
   static const kForgetPassword = '/kForgetPassword';
   static const kLoginSuccess = '/LoginSuccess';
+  static const kSignupSuccess = '/SignupSuccess';
   static const kOTPview = '/OTPview';
   static const kDetailesView = '/DetailesView';
   static const kCartView = '/CartView';
@@ -29,7 +32,14 @@ abstract class AppRouter {
     routes: <RouteBase>[
       GoRoute(
         path: '/',
-        builder: (context, state) => const SplashView(),
+        builder: (context, state) {
+          if (FirebaseAuth.instance.currentUser != null &&
+              FirebaseAuth.instance.currentUser!.emailVerified) {
+            return const MainView();
+          } else {
+            return const SplashView();
+          }
+        },
       ),
       GoRoute(
         path: kHomeView,
@@ -44,8 +54,15 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSignUp,
-        builder: (context, state) => BlocProvider(
-          create: (context) => SignupCubit(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => SigninCubit(),
+            ),
+            BlocProvider(
+              create: (context) => SignupCubit(),
+            ),
+          ],
           child: const SignUpView(),
         ),
       ),
@@ -56,6 +73,10 @@ abstract class AppRouter {
       GoRoute(
         path: kLoginSuccess,
         builder: (context, state) => const LoginSuccessView(),
+      ),
+      GoRoute(
+        path: kSignupSuccess,
+        builder: (context, state) => const SignupSuccessView(),
       ),
       GoRoute(
         path: kOTPview,

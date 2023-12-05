@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/core/constants.dart';
@@ -8,9 +9,10 @@ import 'package:store_app/features/authentication/presentation/views/widgets/cus
 
 class ForgetPasswordBody extends StatelessWidget {
   const ForgetPasswordBody({super.key});
-
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
@@ -39,14 +41,26 @@ class ForgetPasswordBody extends StatelessWidget {
               ),
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.16),
-            const CustomFormField(
+            CustomFormField(
+              controller: emailController,
               lable: 'Email',
               hint: 'Enter your email',
               suffixIcon: Icons.email_outlined,
               keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.16),
-            const CustomBotton(text: 'Coutinue'),
+            CustomBotton(
+              text: 'Coutinue',
+              onPressed: () async {
+                try {
+                  await FirebaseAuth.instance
+                      .sendPasswordResetEmail(email: emailController.text);
+                } catch (e) {
+                  print('================================');
+                  print(e.toString());
+                }
+              },
+            ),
             SizedBox(height: SizeConfig.screenHeight * 0.16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -50,6 +50,7 @@ class CustomFormField extends StatelessWidget {
           style: const TextStyle(fontSize: 22, color: kTextColor),
         ),
         hintText: hint,
+        // hintStyle: TextStyle(color: kSecondaryColor.withOpacity(0.7)),
         border: myBorder(),
         enabledBorder: myBorder(),
         focusedBorder: OutlineInputBorder(

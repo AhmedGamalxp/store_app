@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/core/utils/size_config.dart';
+import 'package:store_app/features/authentication/presentation/controllers/signin_cubit/signin_cubit.dart';
 import 'package:store_app/features/authentication/presentation/views/widgets/signup_form.dart';
 import 'package:store_app/features/authentication/presentation/views/widgets/social_card.dart';
 
@@ -40,18 +42,24 @@ class SignUpBody extends StatelessWidget {
 
             //
             SizedBox(height: SizeConfig.screenHeight * 0.03),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SocialCard(
+                  ontap: () {
+                    BlocProvider.of<SigninCubit>(context).signInWithGoogle();
+                  },
                   image: 'assets/icons/google-icon.svg',
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 SocialCard(
+                  ontap: () {
+                    BlocProvider.of<SigninCubit>(context).signInWithFacebook();
+                  },
                   image: 'assets/icons/facebook-2.svg',
                 ),
-                SizedBox(width: 10),
-                SocialCard(
+                const SizedBox(width: 10),
+                const SocialCard(
                   image: 'assets/icons/twitter.svg',
                 ),
               ],
