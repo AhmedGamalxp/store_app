@@ -4,8 +4,10 @@ import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/size_config.dart';
 
 class DescribtionSection extends StatelessWidget {
-  const DescribtionSection({super.key});
-
+  const DescribtionSection(
+      {super.key, required this.title, required this.describtion});
+  final String title;
+  final String describtion;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +31,7 @@ class DescribtionSection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: Text(
-                'Wirless Controller for PS4 Wirless Controller for PS4 Wirless Controller for PS4 ',
+                title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleLarge,
@@ -56,13 +58,13 @@ class DescribtionSection extends StatelessWidget {
               ),
             ),
             const Gap(10),
-            const Padding(
-              padding: EdgeInsets.only(right: 20),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
               child: Text(
-                'Wirless Controller for PS4 Wirless Controller for PS4 Wirless Controller for PS4 Wirless Controller for PS4 Wirless Controller for PS4 v v vWirless Controller for PS4 Wirless Wirless v vWirless',
+                describtion,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(height: 1.5),
+                style: const TextStyle(height: 1.5),
               ),
             ),
             TextButton(

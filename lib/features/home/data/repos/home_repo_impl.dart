@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:store_app/core/erorrs/failures.dart';
 import 'package:store_app/core/utils/api_services.dart';
-import 'package:store_app/features/home/data/models/product_model/category.dart';
 import 'package:store_app/features/home/data/models/product_model/product_model.dart';
 import 'package:store_app/features/home/data/repos/home_repo.dart';
 
@@ -27,14 +26,16 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<CategoryModel>>> getAllCategory() async {
+  Future<Either<Failure, List<ProductModel>>> getCategoryProduct(
+    String category,
+  ) async {
     try {
-      var data = await apiService.get(endpoint: 'categories');
-      List<CategoryModel> categories = [];
+      var data = await apiService.get(endpoint: 'products/category/$category');
+      List<ProductModel> products = [];
       for (var item in data) {
-        categories.add(CategoryModel.fromJson(item));
+        products.add(ProductModel.fromJson(item));
       }
-      return right(categories);
+      return right(products);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioErorr(e));

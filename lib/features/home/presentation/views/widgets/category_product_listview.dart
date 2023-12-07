@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/features/home/presentation/controllers/all_product_cubit/all_product_cubit.dart';
+import 'package:store_app/features/home/presentation/controllers/category_cubit/category_cubit.dart';
 import 'package:store_app/features/home/presentation/views/widgets/popular_product_item2.dart';
 
-class PopularProductsListview extends StatelessWidget {
-  const PopularProductsListview({super.key});
+class CategoryProducListView extends StatelessWidget {
+  const CategoryProducListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AllProductCubit, AllProductState>(
+    return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-        if (state is AllProductSuccess) {
+        if (state is CategorySuccess) {
           return GridView.builder(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+            // shrinkWrap: true,
+            // physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 16,
@@ -28,7 +28,7 @@ class PopularProductsListview extends StatelessWidget {
             },
             itemCount: state.products.length,
           );
-        } else if (state is AllProductFailure) {
+        } else if (state is CategoryFailure) {
           return Center(
             child: Text(state.erorrMassage),
           );

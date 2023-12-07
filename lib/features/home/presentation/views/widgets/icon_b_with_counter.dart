@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/size_config.dart';
 
 class IconBWithCounter extends StatelessWidget {

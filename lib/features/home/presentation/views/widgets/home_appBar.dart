@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/size_config.dart';
 import 'package:store_app/features/home/presentation/views/widgets/icon_b_with_counter.dart';
 

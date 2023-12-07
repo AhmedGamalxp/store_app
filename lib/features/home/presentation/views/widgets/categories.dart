@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/core/utils/size_config.dart';
 
 class Categories extends StatelessWidget {
@@ -8,24 +10,28 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Flash Deal"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Bill"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "Daily Gift"},
-      {"icon": "assets/icons/Discover.svg", "text": "More"},
+      {"icon": "assets/icons/Flash Icon.svg", "text": "electronics"},
+      {"icon": "assets/icons/Bill Icon.svg", "text": "jewelery"},
+      {"icon": "assets/icons/Game Icon.svg", "text": "men's clothing"},
+      {"icon": "assets/icons/Gift Icon.svg", "text": "women's clothing"},
     ];
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(
           categories.length,
           (index) => CategoryCard(
             icon: categories[index]["icon"],
             text: categories[index]["text"],
-            press: () {},
+            press: () {
+              context.push(
+                AppRouter.kCategoryView,
+                extra: categories[index]["text"],
+              );
+            },
           ),
         ),
       ),

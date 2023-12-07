@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:store_app/features/home/presentation/views/widgets/rounded_btn.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({super.key, required this.ratting});
+  final double ratting;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,17 +29,17 @@ class CustomAppBar extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(8),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '4.6',
-                    style: TextStyle(fontSize: 16),
+                    '$ratting',
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  Gap(5),
-                  Icon(
+                  const Gap(5),
+                  const Icon(
                     Icons.star_rate_rounded,
                     color: Colors.yellow,
                     size: 18,
