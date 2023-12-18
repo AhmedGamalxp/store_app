@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/core/utils/block_observer.dart';
 import 'package:store_app/core/utils/services_locator.dart';
@@ -13,6 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await GetStorage.init();
   setupServiceLocator();
   runApp(
     const Marketo(),

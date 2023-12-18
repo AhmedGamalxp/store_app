@@ -12,9 +12,8 @@ class CategoryProducListView extends StatelessWidget {
       builder: (context, state) {
         if (state is CategorySuccess) {
           return GridView.builder(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-            // shrinkWrap: true,
-            // physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+            physics: const BouncingScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 16,

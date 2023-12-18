@@ -41,7 +41,7 @@ class CustomBottmNavBar extends StatelessWidget {
               ),
               GButton(
                 icon: LineIcons.heart,
-                text: 'Likes',
+                text: 'Favorites',
               ),
               GButton(
                 icon: LineIcons.shoppingBasket,
