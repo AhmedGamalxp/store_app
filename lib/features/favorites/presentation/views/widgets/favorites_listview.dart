@@ -12,7 +12,7 @@ class FavoriteListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List? storageList =
-        BlocProvider.of<FavoriteCubit>(context).storage.read<List>('key');
+        BlocProvider.of<FavoriteCubit>(context).storage.read<List>('favorite');
 
     // List<ProductModel> favoriteList =
     //     storageList?.map((e) => ProductModel.fromJson(e)).toList() ?? [];

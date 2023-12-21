@@ -9,19 +9,21 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit() : super(FavoriteInitial());
   GetStorage storage = GetStorage();
   List<ProductModel> storedList = GetStorage()
-          .read<List>('key')
+          .read<List>('favorite')
           ?.map((e) => ProductModel.fromJson(e))
           .toList() ??
       [];
   void mangeFavorites(ProductModel product) async {
     if (storedList.any((element) => element.id == product.id)) {
       storedList.removeWhere((item) => item.id == product.id);
-      await storage.write('key', storedList.map((e) => e.toJson()).toList());
+      await storage.write(
+          'favorite', storedList.map((e) => e.toJson()).toList());
 
       emit(FavoriteAdd());
     } else if (!storedList.any((element) => element.id == product.id)) {
       storedList.add(product);
-      await storage.write('key', storedList.map((e) => e.toJson()).toList());
+      await storage.write(
+          'favorite', storedList.map((e) => e.toJson()).toList());
       emit(FavoriteRemove());
     }
   }

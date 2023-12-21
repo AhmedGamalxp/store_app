@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:store_app/core/constants.dart';
 import 'package:store_app/features/home/presentation/views/widgets/rounded_btn.dart';
 
@@ -11,7 +12,7 @@ class ColorSection extends StatefulWidget {
 
 class _ColorSectionState extends State<ColorSection> {
   int selectedColor = 0;
-  int numberOfProduct = 1;
+
   List<Color> colorList = [
     const Color(0xffd11141),
     const Color(0xff00b159),
@@ -40,39 +41,6 @@ class _ColorSectionState extends State<ColorSection> {
                 child: colorItem(index),
               ),
             ),
-          ),
-          Row(
-            children: [
-              RoundedBTN(
-                icon: Icons.add,
-                ontap: () {
-                  setState(() {
-                    numberOfProduct++;
-                  });
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  '$numberOfProduct',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              RoundedBTN(
-                icon: Icons.remove,
-                ontap: () {
-                  setState(() {
-                    if (numberOfProduct > 1) {
-                      numberOfProduct--;
-                    }
-                  });
-                },
-              ),
-            ],
           ),
         ],
       ),

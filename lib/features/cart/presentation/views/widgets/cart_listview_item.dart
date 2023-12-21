@@ -1,10 +1,25 @@
+import 'dart:ffi';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/size_config.dart';
+import 'package:store_app/features/cart/presentation/controllers/cart_cubit/cart_cubit.dart';
+import 'package:store_app/features/home/data/models/product_model/product_model.dart';
+import 'package:store_app/features/home/presentation/views/widgets/rounded_btn.dart';
 
 class CartListViewItem extends StatelessWidget {
-  const CartListViewItem({super.key});
+  const CartListViewItem({
+    super.key,
+    required this.product,
+    required this.numberOfProduct,
+  });
+
+  final ProductModel product;
+  final int numberOfProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -22,44 +37,85 @@ class CartListViewItem extends StatelessWidget {
               aspectRatio: .88,
               child: Padding(
                 padding: const EdgeInsets.all(10),
-                child: Image.asset('assets/images/Image Popular Product 1.png'),
+                child: CachedNetworkImage(
+                  imageUrl: product.image as String,
+                ),
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Wirless Controller for PS4',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SizedBox(
+              width: 110,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.title as String,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                Gap(10),
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: ' \$64.88  ',
-                        style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
+                  const Gap(10),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: ' \$${product.price}  ',
+                          style: const TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: 'x2',
-                        style: TextStyle(color: kTextColor),
-                      ),
-                    ],
+                        TextSpan(
+                          text: 'x$numberOfProduct',
+                          style: const TextStyle(color: kTextColor),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Row(
+            children: [
+              RoundedBTN(
+                width: 30,
+                height: 30,
+                color: kSecondaryColor.withOpacity(0.2),
+                icon: Icons.add,
+                ontap: () {
+                  BlocProvider.of<CartCubit>(context).addProductToCart(product);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  '$numberOfProduct',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
-              ],
-            ),
+              ),
+              RoundedBTN(
+                width: 30,
+                height: 30,
+                color: kSecondaryColor.withOpacity(0.2),
+                icon: Icons.remove,
+                ontap: () {
+                  if (numberOfProduct > 1) {
+                    BlocProvider.of<CartCubit>(context)
+                        .removeProductFromCart(product);
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),
