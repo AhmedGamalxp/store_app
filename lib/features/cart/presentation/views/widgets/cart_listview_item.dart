@@ -1,10 +1,8 @@
-import 'dart:ffi';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/size_config.dart';
 import 'package:store_app/features/cart/presentation/controllers/cart_cubit/cart_cubit.dart';

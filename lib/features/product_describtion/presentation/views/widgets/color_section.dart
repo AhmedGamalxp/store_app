@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:store_app/core/constants.dart';
-import 'package:store_app/features/home/presentation/views/widgets/rounded_btn.dart';
 
 class ColorSection extends StatefulWidget {
   const ColorSection({super.key});

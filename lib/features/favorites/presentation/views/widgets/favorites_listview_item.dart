@@ -14,13 +14,6 @@ class FavoritesListviewItem extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
-    List? storageList =
-        BlocProvider.of<FavoriteCubit>(context).storage.read<List>('favorite');
-
-    // List<ProductModel> favoritesList =
-    //     storageList?.map((e) => ProductModel.fromJson(e)).toList() ?? [];
-    List<ProductModel> favoriteList =
-        BlocProvider.of<FavoriteCubit>(context).storedList;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: InkWell(
