@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:store_app/core/constants.dart';
 import 'package:store_app/core/utils/app_router.dart';
 import 'package:store_app/core/utils/size_config.dart';
 
@@ -10,10 +11,10 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "electronics"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "jewelery"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "men's clothing"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "women's clothing"},
+      {"icon": Icons.electric_bolt_rounded, "text": "electronics"},
+      {"icon": Icons.watch, "text": "jewelery"},
+      {"icon": Icons.man, "text": "men's clothing"},
+      {"icon": Icons.woman_2_rounded, "text": "women's clothing"},
     ];
     return Padding(
       padding:
@@ -47,7 +48,9 @@ class CategoryCard extends StatelessWidget {
     required this.press,
   }) : super(key: key);
 
-  final String? icon, text;
+  final String? text;
+  final IconData icon;
+
   final GestureTapCallback press;
 
   @override
@@ -61,15 +64,24 @@ class CategoryCard extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(getProportionateScreenWidth(15)),
               height: getProportionateScreenWidth(55),
-              width: getProportionateScreenWidth(55),
+              width: getProportionateScreenWidth(60),
               decoration: BoxDecoration(
                 color: const Color(0xFFFFECDF),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(icon!),
+              child: Icon(
+                icon,
+                color: kPrimaryColor,
+                size: 27,
+              ),
             ),
             const SizedBox(height: 5),
-            Text(text!, textAlign: TextAlign.center),
+            Text(
+              text!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

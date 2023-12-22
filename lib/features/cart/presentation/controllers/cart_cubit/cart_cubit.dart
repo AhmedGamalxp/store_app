@@ -7,35 +7,19 @@ part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
-  GetStorage storage = GetStorage();
-  List<ProductModel> cartStoredList = GetStorage()
-          .read<List>('cart')
-          ?.map((e) => ProductModel.fromJson(e))
-          .toList() ??
-      [];
-
-  // void mangeCart(ProductModel product) async {
-  //   if (cartStoredList.any((element) => element.id == product.id)) {
-  //     cartStoredList.removeWhere((item) => item.id == product.id);
-  //     await storage.write(
-  //       'cart',
-  //       cartStoredList.map((e) => e.toJson()).toList(),
-  //     );
-
-  //     emit(Cartadd());
-  //   } else if (!cartStoredList.any((element) => element.id == product.id)) {
-  //     cartStoredList.add(product);
-  //     await storage.write(
-  //       'cart',
-  //       cartStoredList.map((e) => e.toJson()).toList(),
-  //     );
-  //     emit(Cartremove());
-  //   }
-  // }
+  // GetStorage storage = GetStorage();
+  // List<ProductModel> cartStoredList = GetStorage()
+  //         .read<List>('cart')
+  //         ?.map((e) => ProductModel.fromJson(e))
+  //         .toList() ??
+  //     [];
 
   var productMap = {};
   void manageCart(ProductModel product) {
-    if (productMap.containsKey(product)) {
+    if (productMap.containsKey(product) &&
+        productMap.keys.any(
+          (element) => element.id == product.id,
+        )) {
       productMap.removeWhere((key, value) => key == product);
       emit(Cartremove());
     } else {

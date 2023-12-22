@@ -11,10 +11,19 @@ part 'signin_state.dart';
 class SigninCubit extends Cubit<SigninState> {
   SigninCubit() : super(SigninInitial());
   FirebaseAuth auth = FirebaseAuth.instance;
-
-  List<String> erorrList = [];
   FaceBookModel faceBookModel = FaceBookModel();
+  List<String> erorrList = [];
+  User? get userProfile => auth.currentUser;
+  late final String userName;
+  late final String email;
+  late final String pictureUrl;
+  void onInit() {
+    userName = userProfile?.displayName ?? '';
+    email = userProfile?.email ?? '';
+    pictureUrl = userProfile?.photoURL ?? '';
+  }
 
+// sign in with email and password
   Future<void> signInWithEmailAndPass({
     required String email,
     required String password,
@@ -25,6 +34,7 @@ class SigninCubit extends Cubit<SigninState> {
         email: email.trim(),
         password: password.trim(),
       );
+  
       if (auth.currentUser!.emailVerified) {
         emit(SigninSuccess());
       } else if (!auth.currentUser!.emailVerified &&
@@ -61,6 +71,9 @@ class SigninCubit extends Cubit<SigninState> {
       emit(SigninLoading());
 
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      // email = googleUser?.email ?? '';
+      // userName = googleUser?.displayName ?? '';
+      // pictureUrl = googleUser?.photoUrl ?? '';
       if (googleUser == null) {
         return;
       }
@@ -70,7 +83,7 @@ class SigninCubit extends Cubit<SigninState> {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      await auth.signInWithCredential(credential);
 
       emit(SigninSuccess());
     } catch (e) {
@@ -90,11 +103,15 @@ class SigninCubit extends Cubit<SigninState> {
       if (loginResult.status == LoginStatus.success) {
         final data = await FacebookAuth.instance.getUserData();
         faceBookModel = FaceBookModel.fromJson(data);
-        print('============================');
-        print(faceBookModel.email);
-        print('============================');
+        // userName = faceBookModel.name!;
+        // email = faceBookModel.email!;
+        // pictureUrl = faceBookModel.picture.toString();
+
         emit(SigninSuccess());
       }
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      await auth.signInWithCredential(facebookAuthCredential);
     } catch (e) {
       if (!erorrList.contains(kErorr)) {
         print('========================');

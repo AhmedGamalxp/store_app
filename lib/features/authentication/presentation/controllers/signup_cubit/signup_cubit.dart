@@ -14,6 +14,7 @@ class SignupCubit extends Cubit<SignupState> {
   Future<void> signUpWithEmailAndPass({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
       emit(SignupLoading());
@@ -21,6 +22,7 @@ class SignupCubit extends Cubit<SignupState> {
         email: email.trim(),
         password: password.trim(),
       );
+      auth.currentUser!.updateDisplayName(name);
       FirebaseAuth.instance.currentUser!.sendEmailVerification();
       emit(SignupSuccess());
     } on FirebaseAuthException catch (ex) {

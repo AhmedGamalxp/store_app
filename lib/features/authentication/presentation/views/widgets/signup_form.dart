@@ -19,6 +19,7 @@ class _SignInFormState extends State<SignUpForm> {
   final formKey = GlobalKey<FormState>();
   TextEditingController passController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   String? email, password;
   bool checkBoxValue = false;
@@ -36,6 +37,7 @@ class _SignInFormState extends State<SignUpForm> {
         child: Column(
           children: [
             CustomFormField(
+              controller: nameController,
               onsave: (value) {},
               onChanged: (value) {
                 if (value == null ||
@@ -216,6 +218,7 @@ class _SignInFormState extends State<SignUpForm> {
                   BlocProvider.of<SignupCubit>(context).signUpWithEmailAndPass(
                     email: emailController.text,
                     password: passController.text,
+                    name: nameController.text,
                   );
                 }
               },

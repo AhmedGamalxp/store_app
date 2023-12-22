@@ -1,12 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:store_app/core/constants.dart';
+import 'package:store_app/features/authentication/presentation/controllers/signin_cubit/signin_cubit.dart';
 
 class ProfilePicture extends StatelessWidget {
   const ProfilePicture({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String pictureUrl = BlocProvider.of<SigninCubit>(context).pictureUrl;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Stack(
@@ -15,11 +19,21 @@ class ProfilePicture extends StatelessWidget {
           CircleAvatar(
             backgroundColor: kSecondaryColor.withOpacity(0.1),
             radius: 50,
-            child: SvgPicture.asset(
-              'assets/icons/User.svg',
-              width: 50,
-              height: 50,
-              color: kPrimaryColor,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: CachedNetworkImage(
+                imageUrl: pictureUrl,
+                errorWidget: (context, url, error) => const Icon(
+                  Icons.person_2_outlined,
+                  color: kPrimaryColor,
+                  size: 50,
+                ),
+                placeholder: (context, url) => const Icon(
+                  Icons.person_2_outlined,
+                  color: kPrimaryColor,
+                  size: 50,
+                ),
+              ),
             ),
           ),
           Positioned(
@@ -33,7 +47,7 @@ class ProfilePicture extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.white, width: 3),
-                  color: kSecondaryColor.withOpacity(0.1),
+                  color: const Color(0xffE8EBE8),
                   shape: BoxShape.circle,
                 ),
                 child: const Padding(

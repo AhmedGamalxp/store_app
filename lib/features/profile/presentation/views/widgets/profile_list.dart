@@ -30,11 +30,11 @@ class ProfileList extends StatelessWidget {
             iconPass: 'assets/icons/Settings.svg',
             ontap: () {},
           ),
-          ProfileListItem(
-            title: 'Help Center',
-            iconPass: 'assets/icons/Question mark.svg',
-            ontap: () {},
-          ),
+          // ProfileListItem(
+          //   title: 'Help Center',
+          //   iconPass: 'assets/icons/Question mark.svg',
+          //   ontap: () {},
+          // ),
           ProfileListItem(
             title: 'Log Out',
             iconPass: 'assets/icons/logout-svgrepo-com.svg',
