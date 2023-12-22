@@ -6,6 +6,10 @@ import 'package:store_app/core/utils/block_observer.dart';
 import 'package:store_app/core/utils/services_locator.dart';
 import 'package:store_app/core/utils/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:store_app/features/cart/presentation/controllers/cart_cubit/cart_cubit.dart';
+import 'package:store_app/features/favorites/presentation/controllers/cubit/favorite_cubit.dart';
+import 'package:store_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:store_app/features/home/presentation/controllers/all_product_cubit/all_product_cubit.dart';
 import 'package:store_app/firebase_options.dart';
 
 void main() async {
@@ -25,10 +29,24 @@ class Marketo extends StatelessWidget {
   const Marketo({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: myTheme(),
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              AllProductCubit(getIt.get<HomeRepoImpl>())..getAllProduct(),
+        ),
+        BlocProvider(
+          create: (context) => FavoriteCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+      ],
+      child: MaterialApp.router(
+        theme: myTheme(),
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }

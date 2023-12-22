@@ -18,11 +18,10 @@ class DetailesView extends StatelessWidget {
           CustomAppBar(ratting: product.rating!.rate as double),
           ProductImages(imageUrl: product.image as String),
           DescribtionSection(
-            title: product.title as String,
-            describtion: product.description as String,
+            product: product,
           ),
           const ColorSection(),
-          const AddToCartSection(),
+          AddToCartSection(product: product),
         ],
       ),
     );

@@ -5,5 +5,6 @@ import 'package:store_app/features/home/data/models/product_model/product_model.
 abstract class HomeRepo {
   Future<Either<Failure, List<ProductModel>>> getAllProduct();
   Future<Either<Failure, List<ProductModel>>> getCategoryProduct(
-      String category);
+    String category,
+  );
 }

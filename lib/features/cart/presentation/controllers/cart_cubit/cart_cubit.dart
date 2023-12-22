@@ -77,4 +77,15 @@ class CartCubit extends Cubit<CartState> {
       return '0.00';
     }
   }
+
+  int getCartProductNumber() {
+    try {
+      return productMap.entries
+          .map((e) => e.value)
+          .toList()
+          .reduce((value, element) => value + element);
+    } catch (e) {
+      return 0;
+    }
+  }
 }

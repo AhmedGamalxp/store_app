@@ -32,13 +32,7 @@ class PopularProductItem2 extends StatelessWidget {
                 .entries
                 .map((e) => e.key)
                 .toList();
-            // List? cartstorageList =
-            //     BlocProvider.of<CartCubit>(context).storage.read<List>('cart');
 
-            // List cartList = cartstorageList
-            //         ?.map((e) => ProductModel.fromJson(e))
-            //         .toList() ??
-            //     [];
             return InkWell(
               onTap: () {
                 context.push(AppRouter.kDetailesView, extra: product);

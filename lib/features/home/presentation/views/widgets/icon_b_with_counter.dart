@@ -35,31 +35,6 @@ class IconBWithCounter extends StatelessWidget {
               ),
             ),
           ),
-          if (numberOfItem != 0)
-            Positioned(
-              right: 0,
-              top: -3,
-              child: Container(
-                width: getProportionateScreenWidth(20),
-                height: getProportionateScreenHeight(20),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0xffff8484),
-                  border: Border.all(width: 2, color: Colors.white),
-                ),
-                child: Center(
-                  child: Text(
-                    '$numberOfItem',
-                    style: TextStyle(
-                      fontSize: getProportionateScreenWidth(10),
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      height: 1,
-                    ),
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );

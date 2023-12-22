@@ -8,13 +8,29 @@ part 'all_product_state.dart';
 class AllProductCubit extends Cubit<AllProductState> {
   AllProductCubit(this.homeRepo) : super(AllProductInitial());
   final HomeRepo homeRepo;
+  late List<ProductModel> productList;
   Future<void> getAllProduct() async {
     emit(AllProductLoading());
     var result = await homeRepo.getAllProduct();
     result.fold((failure) {
       emit(AllProductFailure(failure.erorrMassage));
     }, (products) {
+      productList = products;
       emit(AllProductSuccess(products));
     });
+  }
+
+  // search product
+  List<ProductModel> searchList = [];
+  void addProductToSearchList({
+    required String searchName,
+  }) {
+    searchName.toLowerCase();
+    searchList = productList.where((element) {
+      String title = element.title!.toLowerCase();
+      String price = element.price!.toString().toLowerCase();
+      return title.contains(searchName) || price.contains(searchName);
+    }).toList();
+    emit(AllProductSuccess(searchList));
   }
 }

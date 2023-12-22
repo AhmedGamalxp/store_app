@@ -29,12 +29,18 @@ class PopularProductsListview extends StatelessWidget {
             itemCount: state.products.length,
           );
         } else if (state is AllProductFailure) {
-          return Center(
-            child: Text(state.erorrMassage),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 70),
+            child: Center(
+              child: Text(state.erorrMassage),
+            ),
           );
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: 70),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         }
       },

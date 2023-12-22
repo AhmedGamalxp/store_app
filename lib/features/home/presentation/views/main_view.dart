@@ -22,30 +22,17 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              AllProductCubit(getIt.get<HomeRepoImpl>())..getAllProduct(),
-        ),
-        BlocProvider(
-          create: (context) => FavoriteCubit(),
-        ),
-        BlocProvider(
-          create: (context) => CartCubit(),
-        ),
-      ],
-      child: Scaffold(
-        extendBody: true,
-        body: screens[curruntIndex],
-        bottomNavigationBar: CustomBottmNavBar(
-          onTabChange: (index) {
-            setState(() {
-              curruntIndex = index;
-            });
-          },
-        ),
+    return Scaffold(
+      extendBody: true,
+      body: screens[curruntIndex],
+      bottomNavigationBar: CustomBottmNavBar(
+        onTabChange: (index) {
+          setState(() {
+            curruntIndex = index;
+          });
+        },
       ),
     );
+    //  );
   }
 }

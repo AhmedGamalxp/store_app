@@ -15,7 +15,6 @@ class HomeView extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       extendBody: true,
-
       body: Column(
         children: [
           const HomeViewAppBar(),
@@ -38,7 +37,6 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      // bottomNavigationBar: const CustomBottmNavBar(),
     );
   }
 }
