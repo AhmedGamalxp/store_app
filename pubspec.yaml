@@ -34,6 +34,8 @@ dependencies:
   cloud_firestore: ^4.13.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
+  device_preview: ^1.1.0
+  device_preview_screenshot: ^1.0.0
   dio: ^5.4.0
   firebase_auth: ^4.14.1
   firebase_core: ^2.23.0
